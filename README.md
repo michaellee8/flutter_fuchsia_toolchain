@@ -9,6 +9,8 @@ Use this at your own risk!
 
 Those scripts are tested to work in Ubuntu 18.04 LTS.
 
+Look at usage with `flutterfx help`.
+
 ## Some notes
 1. You may want to add `./flutter_fuchsia_toolchain/bin` to your PATH.
 2. You will need `export FUCHSIA_SSH_CONFIG=$HOME/.fuchsia/sshconfig` to setup flutter's connection to the device.
