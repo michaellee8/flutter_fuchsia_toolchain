@@ -16,6 +16,12 @@ if [[ "$1" == "bootstrap" ]];then
   exit
 fi
 
+if [[ "$1" == "readme" ]];then
+  cd $DIR
+  less README.md
+  exit
+fi
+
 if [[ "$1" == "update" ]];then
   cd $DIR
   git submodule update --init --recursive
