@@ -1,0 +1,51 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+if [[ "$1" == "bootstrap" ]];then
+  cd $DIR
+  git submodule init
+  sudo apt-get install curl unzip python2 \
+  libglu1-mesa bash curl git unzip xz-utils zip \
+  libvulkan1 mesa-vulkan-drivers
+
+  cd fuchsia-cpp-gn-sdk && ./scripts/setup-and-test.sh && cd ../
+
+  ./flutter/bin/flutter precache --all-platforms --fuchsia
+fi
+
+if [[ "$1" == "update" ]];then
+  cd $DIR
+  git submodule update --init --recursive
+  git pull
+  exit
+fi
+
+if [[ "$1" == "fuchsia" ]];then
+  "$DIR/fuchsia-cpp-gn-sdk/third_party/fuchsia-sdk/bin/$2.sh" "${@:2}"
+  exit
+fi
+
+if [[ "$1" == "flutter" ]];then
+  "$DIR/flutter/bin/flutter" "${@:2}"
+  exit
+fi
+
+show_help(){
+cat << EOF
+usage: flutterfx
+
+    bootstrap: init submodule and download required artifacts
+    update: update this repo and submodules
+    fuchsia <command>: run <command> in the fuchsia sdk
+    flutter <command>: run <command> in the flutter sdk
+    help: display this message
+EOF
+}
+
+if [[ "$1" == "help" ]];then
+  show_help
+  exit
+fi
+
+show_help

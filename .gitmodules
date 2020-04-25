@@ -1,0 +1,10 @@
+[submodule "fuchsia-cpp-gn-sdk"]
+	path = fuchsia-cpp-gn-sdk
+	url = https://fuchsia.googlesource.com/samples
+	branch = master
+	fetchRecurseSubmodules = true
+[submodule "flutter"]
+	path = flutter
+	url = https://github.com/flutter/flutter
+	branch = master
+	fetchRecurseSubmodules = true
