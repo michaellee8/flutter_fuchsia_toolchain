@@ -24,7 +24,7 @@ if [[ "$1" == "update" ]];then
 fi
 
 if [[ "$1" == "fuchsia" ]];then
-  "$DIR/fuchsia-cpp-gn-sdk/third_party/fuchsia-sdk/bin/$2.sh" "${@:2}"
+  "$DIR/fuchsia-cpp-gn-sdk/third_party/fuchsia-sdk/bin/$2.sh" "${@:3}"
   exit
 fi
 
