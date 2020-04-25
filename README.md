@@ -11,6 +11,8 @@ Those scripts are tested to work in Ubuntu 18.04 LTS.
 
 ## Some notes
 1. You may want to add `./flutter_fuchsia_toolchain/bin` to your PATH.
+2. You will need `export FUCHSIA_SSH_CONFIG=$HOME/.fuchsia/sshconfig` to setup flutter's connection to the device.
+3. Use `--verbose` for debugging.
 
 ## Known issues
 1. Somehow the guest will not launch the installed packages currently, will be 
