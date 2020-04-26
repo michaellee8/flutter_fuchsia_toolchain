@@ -29,7 +29,8 @@ flutterfx bootstrap
 sudo ip tuntap add dev qemu mode tap user $USER && sudo ip link set qemu up
 flutterfx fuchsia femu -N --image workstation.qemu-x64-release
 flutterfx fuchsia fserve --image workstation.qemu-x64-release
-cd flutter_gallery # Look at Note 4
+cd flutter_gallery # See Note 4
+export FUCHSIA_SSH_CONFIG=$HOME/.fuchsia/sshconfig # See Note 2
 flutterfx flutter run -d <flutter device name from flutterfx flutter devices>
 ```
 
