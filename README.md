@@ -71,7 +71,7 @@ sudo ip tuntap add dev qemu mode tap user $USER && sudo ip link set qemu up
 ifconfig qemu | grep inet6
 flutterfx fuchsia femu -N --image workstation.qemu-x64-release
 flutterfx fuchsia fserve --image workstation.qemu-x64-release
-flutterfx fuchsia fpublish ~/gallery/build/fuchsia/pkg/gallery_0.far # if you are playing with flutter gallery
+flutterfx fuchsia fpublish ~/gallery/build/fuchsia/pkg/gallery-0.far # if you are playing with flutter gallery
 flutterfx flutter build fuchsia --release --verbose --runner-source fuchsia.com --tree-shake-icons
 flutterfx flutter run -d <flutter device name from flutterfx flutter devices>
 ```
