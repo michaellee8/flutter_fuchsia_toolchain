@@ -86,6 +86,7 @@ sudo ip tuntap add dev qemu mode tap user $USER && sudo ip link set qemu up
 3. Use `--verbose` for debugging.
 4. You may want to look at my flutter gallery fork at https://github.com/michaellee8/flutter_gallery to look for 
 fuchsia specific config.
+5. A link on the full snapshot error (chinese) https://juejin.im/post/5d0dfd6f518825329840196d
 
 ## Known issues
 1. Somehow the guest will not launch the installed packages currently, will be 
