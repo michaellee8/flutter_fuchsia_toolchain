@@ -57,7 +57,8 @@ investigating.**
 cd ~
 git clone https://github.com/michaellee8/flutter_fuchsia_toolchain.git --recursive
 git clone https://github.com/michaellee8/flutter_gallery.git
-# install ~/flutter_fuchsia_toolchain/bin to your path
+# install ~/flutter_fuchsia_toolchain/bin and 
+# ~/flutter_fuchsia_toolchain/depot_tools to your path
 flutterfx bootstrap
 sudo ip tuntap add dev qemu mode tap user $USER && sudo ip link set qemu up
 (term1) cd flutter_gallery
