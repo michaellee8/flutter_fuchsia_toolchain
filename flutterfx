@@ -13,7 +13,7 @@ if [[ "$1" == "bootstrap" ]];then
 
   cd fuchsia-cpp-gn-sdk && ./scripts/setup-and-test.sh && cd ../
 
-  ./flutter/bin/flutter precache --fuchsia
+  ./flutter/bin/flutter precache --fuchsia --all-platforms
 
   exit
 fi
