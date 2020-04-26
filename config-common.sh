@@ -1,1 +1,1 @@
-export EMULATOR_FLAVOUR=workstation.qemu-x64-release
+USE_MODIFIED_FLUTTER=1
