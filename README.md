@@ -31,7 +31,7 @@ flutterfx fuchsia femu -N --image workstation.qemu-x64-release
 flutterfx fuchsia fserve --image workstation.qemu-x64-release
 cd flutter_gallery # See Note 4
 export FUCHSIA_SSH_CONFIG=$HOME/.fuchsia/sshconfig # See Note 2
-flutterfx flutter run -d <flutter device name from flutterfx flutter devices>
+flutterfx flutter run --verbose -d <flutter device name from flutterfx flutter devices>
 ```
 
 ## So how do I actually run my Flutter app in Fuchsia
@@ -59,24 +59,28 @@ git clone https://github.com/michaellee8/flutter_fuchsia_toolchain.git --recursi
 git clone https://github.com/michaellee8/flutter_gallery.git
 # install ~/flutter_fuchsia_toolchain/bin and 
 # ~/flutter_fuchsia_toolchain/depot_tools to your path
+# Before my PR being merged, you will need to apply the patch in
+# https://github.com/flutter/flutter/pull/55715
 flutterfx bootstrap
 sudo ip tuntap add dev qemu mode tap user $USER && sudo ip link set qemu up
 (term1) cd flutter_gallery
 (term1) flutterfx flutter pub get
-(term1) flutterfx flutter build fuchsia --release --runner-source flutter_tool \
+(term1) flutterfx flutter build fuchsia --release --runner-source fuchsia.com \
   --tree-shake-icons  --verbose --target-platform fuchsia-x64 
+(term2) flutterfx fuchsia femu -N --image workstation.qemu-x64-release
+(term3) flutterfx fuchsia fserve --image workstation.qemu-x64-release
+(term1) flutterfx fuchsia fpublish ~/flutter_gallery/build/fuchsia/pkg/flutter_gallery-0.far
+(term1) cd "$(flutterfx dir)/flutter/bin/cache/artifacts/flutter_runner/flutter/x64/release" && \
+            flutterfx fuchsia fpublish aot/flutter_aot_product_runner-0.far \
+            aot/dart_aot_product_runner-0.far jit/flutter_jit_product_runner-0.far \
+            aot/dart_jit_product_runner-0.far && cd ~/flutter_gallery
+(term4) flutterfx fuchsia fssh log_listener
+# in the ermine ui shell, type flutter_gallery and then press enter to launch it
 # if you face Error while initializing the Dart VM: Wrong full snapshot version, expected
 # you will need to do
 # flutterfx flutter clean
 # cd ~/flutter_fuchsia_toolchain/flutter/bin
 # rm -rf ./cache
-(term2) flutterfx fuchsia femu -N --image workstation.qemu-x64-release
-(term1) flutterfx fuchsia fpublish ~/flutter_gallery/build/fuchsia/pkg/flutter_gallery-0.far
-(term3) flutterfx fuchsia fserve --image workstation.qemu-x64-release
-(term1) flutterfx fuchsia fpublish ~/flutter_gallery/build/fuchsia/pkg/flutter_gallery-0.far
-(term4) flutterfx fuchsia fssh log_listener
-(term1) pkgctl resolve fuchsia-pkg://fuchsia.com/flutter_gallery
-# in the ermine ui shell, type flutter_gallery and then press enter to launch it
 ```
 
 
@@ -123,3 +127,7 @@ flutterfx flutter build fuchsia --release --verbose --runner-source fuchsia.com 
 flutterfx flutter run -d <flutter device name from flutterfx flutter devices>
 flutterfx fuchsia fssh log_listener --clock Local
 ```
+
+## Expected Result
+
+![Flutter Gallery on Fuchsia!](flutter-gallery-on-fuchsia.png)
