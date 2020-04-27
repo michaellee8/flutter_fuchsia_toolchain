@@ -18,6 +18,11 @@ if [[ "$1" == "bootstrap" ]];then
   exit
 fi
 
+if [[ "$1" == "dir" ]];then
+  echo $DIR
+  exit
+fi
+
 if [[ "$1" == "readme" ]];then
   cd $DIR
   less README.md
@@ -39,12 +44,16 @@ fi
 if [[ "$1" == "flutter" ]];then
   if [[ -n "$USE_MODIFIED_FLUTTER" ]]; then
     "$DIR/flutter/bin/cache/dart-sdk/bin/dart" \
-      "$DIR/flutter/packages/flutter_tools/bin/flutter_tools.dart" "${@:2}"
+      "$DIR/flutter/packages/flutter_tools/bin/flutter_tools.dart" \
+      "${@:2}"
   else
-    "$DIR/flutter/bin/flutter" "${@:2}"
+    "$DIR/flutter/bin/flutter" \
+      "${@:2}"
   fi
   exit
 fi
+
+
 
 show_help(){
 cat << EOF

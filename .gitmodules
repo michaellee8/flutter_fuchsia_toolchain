@@ -8,13 +8,3 @@
 	url = https://github.com/flutter/flutter
 	branch = master
 	fetchRecurseSubmodules = true
-[submodule "engine"]
-	path = engine
-	url = https://github.com/flutter/engine.git
-	branch = master
-	fetchRecurseSubmodules = true
-[submodule "depot_tools"]
-	path = depot_tools
-	url = https://chromium.googlesource.com/chromium/tools/depot_tools.git
-	branch = master
-	fetchRecurseSubmodules = true
