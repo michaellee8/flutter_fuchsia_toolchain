@@ -50,9 +50,6 @@ is the only way that is verified to work. Prepare a great internet connection or
 
 Note that (term1) (term2) (term3) ... means different terminal. You will need a few of them.
 
-**Currently this is not working yet. The package loads but some kernel error still exists. Still 
-investigating.**
-
 ```sh
 cd ~
 git clone https://github.com/michaellee8/flutter_fuchsia_toolchain.git --recursive
