@@ -9,6 +9,16 @@ Use this at your own risk!
 
 Those scripts are tested to work in Ubuntu 18.04 LTS.
 
+## Features
+
+- Running Fuchsia in emulator/on device without cloning and compiling the whole source tree using Google's Fuchsia SDK.
+- Can run Flutter apps with hot-reload enabled, and build a release package and then push it into Fuchsia as well.
+- Wrapped into one single command flutterfx to call all these tools.
+
+## Expected Result
+
+![Flutter Gallery on Fuchsia!](flutter-gallery-on-fuchsia.png)
+
 ## Command usage
 ```
 usage: flutterfx
@@ -128,6 +138,4 @@ flutterfx flutter run -d <flutter device name from flutterfx flutter devices>
 flutterfx fuchsia fssh log_listener --clock Local
 ```
 
-## Expected Result
 
-![Flutter Gallery on Fuchsia!](flutter-gallery-on-fuchsia.png)
