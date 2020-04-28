@@ -22,6 +22,8 @@ usage: flutterfx
 ```
 
 ## Setting up for flutter run (working now)
+It is verified that hot reload iw working as well. Use it by pressing r 
+in the terminal after launching the flutter app with flutter run.
 ```sh
 git clone https://github.com/michaellee8/flutter_fuchsia_toolchain.git --recursive
 # Assumes you have added ./bin to your path, if you haven't, use ./bin/flutterfx instead of flutterfx
