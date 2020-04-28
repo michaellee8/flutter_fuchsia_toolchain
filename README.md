@@ -21,24 +21,25 @@ usage: flutterfx
     help: display this message
 ```
 
-## Setting up
+## Setting up for flutter run (working now)
 ```sh
 git clone https://github.com/michaellee8/flutter_fuchsia_toolchain.git --recursive
 # Assumes you have added ./bin to your path, if you haven't, use ./bin/flutterfx instead of flutterfx
+# You need to apply my patch at https://github.com/flutter/flutter/pull/55664/files before it is merged
 flutterfx bootstrap
 sudo ip tuntap add dev qemu mode tap user $USER && sudo ip link set qemu up
-flutterfx fuchsia femu -N --image workstation.qemu-x64-release
-flutterfx fuchsia fserve --image workstation.qemu-x64-release
+flutterfx fuchsia femu -N --image qemu-x64
+flutterfx fuchsia fserve --image qemu-x64
 cd flutter_gallery # See Note 4
 export FUCHSIA_SSH_CONFIG=$HOME/.fuchsia/sshconfig # See Note 2
 flutterfx flutter run --verbose -d <flutter device name from flutterfx flutter devices>
 ```
 
-## So how do I actually run my Flutter app in Fuchsia
+## So how do I actually run my Flutter app in Fuchsia (using flutter build on workstation flavor here)
 
-Okay, I know why you are here. There are a lot of quirks here. `flutter run` after applying my 
-patch still breaks because of some `rust tuf` I/O error (you can see it with log_listener). Also 
-for some reason it is not possible to launch a package via tiles_Ctl or sessionctl on the emulator 
+Okay, I know why you are here. There are a lot of quirks here. ~~`flutter run` after applying my 
+patch still breaks because of some `rust tuf` I/O error~~ (working now) (you can see it with log_listener). Also 
+for some reason it is not possible to launch a package via tiles_ctl or sessionctl on the emulator 
 and the ermine (the desktop environment you see in the workstation flavour) will not load any 
 package name that is not present in the original package repo. So my hack is to force updating 
 the `flutter_gallery` package and then launch it from ermine. You can do further work by changing my 
@@ -87,6 +88,7 @@ sudo ip tuntap add dev qemu mode tap user $USER && sudo ip link set qemu up
 4. You may want to look at my flutter gallery fork at https://github.com/michaellee8/flutter_gallery to look for 
 fuchsia specific config.
 5. A link on the full snapshot error (chinese) https://juejin.im/post/5d0dfd6f518825329840196d
+6. Interestingly, `flutter run` only works on qemu-x64 image. Maybe it is because workstation does not have tiles.
 
 ## Known issues
 1. Somehow the guest will not launch the installed packages currently, will be 
