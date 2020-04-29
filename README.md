@@ -15,6 +15,11 @@ Those scripts are tested to work in Ubuntu 18.04 LTS.
 - Can run Flutter apps with hot-reload enabled, and build a release package and then push it into Fuchsia as well.
 - Wrapped into one single command flutterfx to call all these tools.
 
+## Video tutorial
+https://youtu.be/gxV8EN9vzbc
+- Remember to do `export FUCHSIA_SSH_CONFIG=$HOME/.fuchsia/sshconfig` before running flutter run in any shell, I didn't do that in the video since I have it in my .bashrc .
+- Also I forgot to mention that any new Flutter project will require a cmx file to be able to run/bulild on Fuchsia, an example can be found at https://github.com/michaellee8/flutter_gallery/blob/master/fuchsia/meta/flutter_gallery.cmx
+
 ## Expected Result
 
 ![Flutter Gallery on Fuchsia!](flutter-gallery-on-fuchsia.png)
