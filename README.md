@@ -21,6 +21,16 @@ usage: flutterfx
     help: display this message
 ```
 
+## Prerequisites
+The below commands reflect the libraries and utilities you have to install before you can get started. 
+However these command will probably differ depending on your OS and distro. 
+
+```sh
+sudo apt-get install curl unzip python2 \
+libglu1-mesa bash curl git unzip xz-utils zip \
+libvulkan1 mesa-vulkan-drivers
+```
+
 ## Setting up for flutter run (working now)
 It is verified that hot reload iw working as well. Use it by pressing r 
 in the terminal after launching the flutter app with flutter run.
