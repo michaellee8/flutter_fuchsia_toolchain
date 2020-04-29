@@ -162,3 +162,5 @@ rm -rf ~/flutter_gallery # If you cloned the flutter gallery there
 rm -rf ~/.fuchsia # Default location of fuchsis sdk's image and package cache
 ```
 
+## IDE Setup
+You just need to set the Flutter SDK location of your IDE to `$(flutterfx dir)/flutter`, which should be `~/flutter_fuchsia_toolchain/flutter` if you followed the suggestions above.
