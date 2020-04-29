@@ -148,4 +148,12 @@ flutterfx flutter run -d <flutter device name from flutterfx flutter devices>
 flutterfx fuchsia fssh log_listener --clock Local
 ```
 
+## To uninstall/reinstall
+**Make sure you know what you are doing before typing these commands!**
+```sh
+rm -rf $(flutterfx dir) # This command will get you the installation location of the toolchain 
+# and delete it completely
+rm -rf ~/flutter_gallery # If you cloned the flutter gallery there
+rm -rf ~/.fuchsia # Default location of fuchsis sdk's image and package cache
+```
 
