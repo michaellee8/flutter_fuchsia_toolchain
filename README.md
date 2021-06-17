@@ -55,6 +55,8 @@ git clone http://github.com/michaellee8/flutter_fuchsia_toolchain --recurse-subm
 # Assumes you have added ./bin to your path, if you haven't, use ./bin/flutterfx instead of flutterfx
 # You need to apply my patch at https://github.com/flutter/flutter/pull/55664/files before it is merged
 flutterfx bootstrap
+flutterfx flutter config --enable-fuchsia
+flutterfx bootstrap
 sudo ip tuntap add dev qemu mode tap user $USER && sudo ip link set qemu up
 flutterfx fuchsia femu -N --image qemu-x64
 flutterfx fuchsia fserve --image qemu-x64
@@ -117,6 +119,15 @@ sudo ip tuntap add dev qemu mode tap user $USER && sudo ip link set qemu up
 fuchsia specific config.
 5. A link on the full snapshot error (chinese) https://juejin.im/post/5d0dfd6f518825329840196d
 6. Interestingly, `flutter run` only works on qemu-x64 image. Maybe it is because workstation does not have tiles.
+7. If you don't to modify your path, you may also `cd` into repo root and do `alias flutterfx="$(pwd)/bin/flutterfx"`.
+8. If you use shallow clone and ran into some flutter veriosn issues, either 
+   follow the steps in https://github.com/flutter/flutter/wiki/Workarounds-for-common-issues#flutter-installation-corrupted 
+   and then run `git pull --unshallow` on the flutter git repo 
+   or just delete the version constriant in your flutter app's pubspec.yaml, the 
+   former one should be considered as the more approiate solution but require 
+   more download size.
+9. Add `--software-gpu` to the `femu` command if you hit any Vulkan or Dart 
+   Observatory issues. It is the mitigation for using Intel GPU on Linux.
 
 ## Known issues
 1. Somehow the guest will not launch the installed packages currently, will be 
@@ -125,7 +136,7 @@ issue, but some other bugs are being investigated.
 
 ## Emulator flavours
 You should look at the values listed in here (or newer directories): 
-https://console.cloud.google.com/storage/browser/fuchsia/development/0.20200424.3.1/packages/?authuser=0  
+https://console.cloud.google.com/storage/browser/fuchsia/development/5.20210616.2.1/images/?authuser=0  
 
 - qemu-arm64
 - qemu-x64
@@ -152,6 +163,9 @@ flutterfx fuchsia fpublish ~/gallery/build/fuchsia/pkg/gallery-0.far # if you ar
 flutterfx flutter build fuchsia --release --verbose --runner-source fuchsia.com --tree-shake-icons
 flutterfx flutter run -d <flutter device name from flutterfx flutter devices>
 flutterfx fuchsia fssh log_listener --clock Local
+
+# if fssh somehow won't work, use this instead
+ssh -F /home/michaellee8/.fuchsia/sshconfig fe80::89ff:4714:d9a3:586c%qemu
 ```
 
 ## To uninstall/reinstall
