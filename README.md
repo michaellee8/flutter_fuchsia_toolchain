@@ -9,6 +9,12 @@ Use this at your own risk!
 
 Those scripts are tested to work in Ubuntu 18.04 LTS.
 
+## Required patches
+
+Before https://github.com/flutter/flutter/pull/84759 is merged, one will need 
+the modification in https://github.com/michaellee8/flutter/tree/fix/fuchsia-pm-serve 
+to use `flutter run` properly.
+
 ## Features
 
 - Running Fuchsia in emulator/on device without cloning and compiling the whole source tree using Google's Fuchsia SDK.
