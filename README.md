@@ -102,7 +102,7 @@ sudo ip tuntap add dev qemu mode tap user $USER && sudo ip link set qemu up
   --tree-shake-icons  --verbose --target-platform fuchsia-x64 
 (term2) flutterfx fuchsia femu -N --image workstation.qemu-x64-release
 (term3) flutterfx fuchsia fserve --image workstation.qemu-x64-release
-(term1) flutterfx fuchsia fpublish ~/flutter_gallery/build/fuchsia/pkg/flutter_gallery-0.far
+(term1) flutterfx fuchsia fpublish ./build/fuchsia/pkg/flutter_gallery-0.far
 (term1) cd "$(flutterfx dir)/flutter/bin/cache/artifacts/flutter_runner/flutter/x64/release" && \
             flutterfx fuchsia fpublish aot/flutter_aot_product_runner-0.far \
             aot/dart_aot_product_runner-0.far jit/flutter_jit_product_runner-0.far \
