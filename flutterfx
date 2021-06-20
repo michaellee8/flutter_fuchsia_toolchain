@@ -38,6 +38,11 @@ if [[ "$1" == "fuchsia" ]];then
   exit
 fi
 
+if [[ "$1" == "ffx" ]]; then
+    "$DIR/fuchsia-cpp-gn-sdk/third_party/fuchsia-sdk/tools/x64/ffx" "${@:2}"
+    exit
+fi
+
 if [[ "$1" == "flutter" ]];then
   if [[ -n "$USE_MODIFIED_FLUTTER" ]]; then
     PUB_CACHE="$DIR/.pub-cache" "$DIR/flutter/bin/cache/dart-sdk/bin/dart" \
