@@ -3,8 +3,10 @@
 	url = https://fuchsia.googlesource.com/samples
 	branch = main
 	fetchRecurseSubmodules = true
+    shallow = true
 [submodule "flutter"]
 	path = flutter
 	url = https://github.com/flutter/flutter
 	branch = master
 	fetchRecurseSubmodules = true
+    shallow = true

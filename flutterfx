@@ -63,7 +63,7 @@ usage: flutterfx
 
     bootstrap: init submodule and download required artifacts
     update: update this repo and submodules
-    fuchsia <fserve|fpave|fserve-remote|fdevtools|fssh|fcp|femu|fpublish|fconfig|femu-exec-wrapper>: run <command> in the fuchsia sdk
+    fuchsia <fserve|fpave|fserve-remote|fdevtools|fssh|fcp|femu|fpublish|fconfig|femu-exec-wrapper|start-unsecure-internet>: run <command> in the fuchsia sdk
     flutter <command>: run <command> in the flutter sdk
     readme: show the readme file
     help: display this message
